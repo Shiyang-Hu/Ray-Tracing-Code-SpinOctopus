@@ -135,8 +135,8 @@ subroutine point_source_dynamic(r,theta,phi,flow_velocity,r_local_velocity,theta
     real*8 lapse_alpha,lorentz_gamma,drag_omega
     call covariant_metric(r,theta,g_ab)
     r_local_velocity=point_source_vr
-    phi_local_velocity=point_source_vtheta
-    theta_local_velocity=point_source_vphi
+    theta_local_velocity=point_source_vtheta
+    phi_local_velocity=point_source_vphi
     lapse_alpha=dsqrt(-g_ab(1,1)+g_ab(1,4)*g_ab(1,4)/g_ab(4,4))
     drag_omega=-g_ab(1,4)/g_ab(4,4)
     lorentz_gamma=1d0/dsqrt(1d0-r_local_velocity*r_local_velocity-phi_local_velocity*phi_local_velocity-theta_local_velocity*theta_local_velocity)

@@ -37,7 +37,7 @@ eht_cmap.set_bad(color='black')
 
 
 def draw_profile(ax, x, y, z, xlim, ylim,
-                 xlabel=r'$r\cos\theta$', ylabel=r'$r\sin\theta$'):
+                 xlabel=r'$r\sin\theta$', ylabel=r'$r\cos\theta$'):
     ax.set_facecolor('black')
     norm = PowerNorm(gamma=gamma_value, vmin=0, vmax=emission_max)
 
@@ -72,7 +72,7 @@ ax3 = fig.add_subplot(gs[1, :])
 
 draw_profile(ax1, x1, y1, z1,
              (x_min1, x_max1), (y_min1, y_max1),
-             xlabel=r'$r\cos\theta$', ylabel=r'$r\sin\theta$')
+             xlabel=r'$r\sin\theta$', ylabel=r'$r\cos\theta$')
 
 draw_profile(ax2, x2, y2, z2,
              (x_min2, x_max2), (y_min2, y_max2),

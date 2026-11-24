@@ -37,7 +37,8 @@ subroutine photon_initial_values(x_obs,y_obs,vector)
     coefficient_a=g_ab(1,1)
     coefficient_b=2d0*g_ab(1,4)*phi_dot
     coefficient_c=g_ab(2,2)*r_dot*r_dot+g_ab(3,3)*theta_dot*theta_dot+g_ab(4,4)*phi_dot*phi_dot
-    t_dot=(-coefficient_b+dsqrt(coefficient_b*coefficient_b-4d0*coefficient_a*coefficient_c))/2d0/coefficient_a
+    !t_dot=(-coefficient_b+dsqrt(coefficient_b*coefficient_b-4d0*coefficient_a*coefficient_c))/2d0/coefficient_a
+    t_dot=(-coefficient_b-dsqrt(coefficient_b*coefficient_b-4d0*coefficient_a*coefficient_c))/2d0/coefficient_a
     !************************************************************************************************************************!
     p_t=g_ab(1,1)*t_dot+g_ab(1,4)*phi_dot
     p_phi=g_ab(4,4)*phi_dot+g_ab(1,4)*t_dot

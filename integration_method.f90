@@ -82,7 +82,7 @@ subroutine rkf(u,step)
 use integration_parameters
 implicit none
 real*8,dimension(8)::u,u_1,u_2,eps
-real*8 max_eps
+real*8 max_eps,scale_i
 real*8 step
 integer i
 u_1=0d0
@@ -96,13 +96,15 @@ do while(.true.)
     call rkfifth(u_1,step)
     call rksixth(u_2,step)
     do i=1,8,1
-        eps(i)=dabs(u_1(i)-u_2(i))/u_2(i)
+        scale_i=dabs(u(i))+dabs(u_2(i)-u(i))+1d-2
+        eps(i)=dabs(u_1(i)-u_2(i))/scale_i
+        !eps(i)=dabs(u_1(i)-u_2(i))/dabs(u_2(i))
     end do
     max_eps=maxval(eps)
     if(max_eps.gt.solution_error)then
         step=0.5d0*step
     else
-        u=u_1
+        u=u_2
         exit
     end if
 end do
